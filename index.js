@@ -1,7 +1,5 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const objectId = require("mongodb/lib/bson");
-
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -56,16 +54,16 @@ app.post("/items", async (req, res) => {
   });
   res.send(items);
 });
-app.delete("/items", async (req, res) => {
-  // const newItem = new Item({
-  //   name: req.body.name,
-  // });
-  let db = await client.db("courses");
-  const items = await db.collection("items").deleteOne({
-    _id: new objectId(req.body.id),
-  });
-  res.send(items);
-});
+// app.delete("/items", async (req, res) => {
+//   // const newItem = new Item({
+//   //   name: req.body.name,
+//   // });
+//   let db = await client.db("courses");
+//   const items = await db.collection("items").deleteOne({
+//     _id: new objectId(req.body.id),
+//   });
+//   res.send(items);
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
