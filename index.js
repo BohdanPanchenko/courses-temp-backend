@@ -1,4 +1,11 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+
+console.log("Node.js version:", process.version);
+console.log(
+  "Dependencies:",
+  JSON.stringify(require("./package.json").dependencies, null, 2)
+);
+
 const express = require("express");
 export const app = express();
 const port = 3000;
