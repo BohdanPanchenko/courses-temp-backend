@@ -1,10 +1,6 @@
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
-console.log("Node.js version:", process.version);
-console.log(
-  "Dependencies:",
-  JSON.stringify(require("./package.json").dependencies, null, 2)
-);
+const objectId = require("mongodb/lib/bson");
 
 const express = require("express");
 const app = express();
@@ -66,7 +62,7 @@ app.delete("/items", async (req, res) => {
   // });
   let db = await client.db("courses");
   const items = await db.collection("items").deleteOne({
-    _id: new ObjectId(req.body.id),
+    _id: new objectId(req.body.id),
   });
   res.send(items);
 });
