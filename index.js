@@ -7,7 +7,7 @@ console.log(
 );
 
 const express = require("express");
-export const app = express();
+const app = express();
 const port = 3000;
 
 const uri =
