@@ -24,6 +24,7 @@ const register = async (req, res) => {
     const result = await db.collection("users").insertOne({
       username,
       password: hashedPassword,
+      role: "user",
     });
 
     res.status(201).send({ message: "User registered successfully" });
@@ -50,8 +51,8 @@ const login = async (req, res) => {
       return res.status(400).send({ message: "Invalid username or password" });
     }
 
-    // const isPasswordValid = await bcrypt.compare(password, user.password);
-    const isPasswordValid = password === user.password;
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    // const isPasswordValid = password === user.password;
     console.log(isPasswordValid);
     if (!isPasswordValid) {
       return res.status(400).send({ message: "Invalid username or password" });
